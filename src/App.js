@@ -1,25 +1,22 @@
 import React, { Component } from "react";
-class App extends Component {
-  state = {
-    newTodo: "",
-    todos: [
-      "Buy tea",
-      "Buy boba",
-      "Boil water",
-      "Add boba",
-      "Drain water",
-      "Add tea"
-    ]
-  };
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
+import Home from "./pages/home";
+import About from "./pages/about";
+
+class App extends Component {
   render() {
     return (
-      <div>
-        <h1> How to make boba at home</h1>
-        {this.state.todos.map(todo => (
-          <li key={todo}> {todo}</li>
-        ))}
-      </div>
+      <Router>
+        <div>
+          <Link to="/">Home</Link>
+          <p> </p>
+          <Link to="/about">About</Link>
+
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+        </div>
+      </Router>
     );
   }
 }
